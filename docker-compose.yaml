@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MODEL_PATH=/root/.ollama
+    volumes:
+      - ./app:/app
+      - ./model:/root/.ollama
+    entrypoint: ["/bin/bash", "-c", "/home/scripts/entrypoint.sh"]
+    deploy:
+      resources:
+        limits:
+          memory: 6g
+          cpus: '4.0'
+        reservations:
+          memory: 4g
+          cpus: '2.0'
+    restart: unless-stopped
+    networks:
+      - ollama_network
+  
+  gradio:
+    build:
+      context: ./gradio
+      dockerfile: Dockerfile
+    image: gradio:latest
+    container_name: gradio
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./app:/app
+    entrypoint: ["python3", "/app/chatbot.py"]
+    depends_on:
+      - ollama
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          cpus: '2.0'
+        reservations:
+          memory: 1g
+          cpus: '1.0'
+    restart: unless-stopped
+    networks:
+      - ollama_network
+
+networks:
+  ollama_network:
+    driver: bridge

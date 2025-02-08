@@ -1,7 +1,7 @@
 
 ## Description
 
-In this project, we utilize the Ollama to run the DeepSeek r1 model locally using Mac resources and Gradio to provide a chatbot interface. The entire setup is containerized using Docker, allowing for easy deployment and management of the application. By leveraging Docker Compose, we ensure that the environment remains consistent and isolated, making it straightforward to run the chatbot service locally on a Mac.
+In this project, we utilize the Ollama to run the DeepSeek r1 model locally using Mac resources and Gradio to provide a chatbot interface. The entire setup is containerized using Docker, allowing for easy deployment and management of the application. By leveraging Docker Compose, we ensure that the environment remains consistent and isolated, making it straightforward to run the chatbot service locally where docker is installed.
 
 ## Prerequisites
 

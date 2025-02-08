@@ -9,7 +9,7 @@ In this project, we utilize the Ollama to run the DeepSeek r1 model locally usin
 
 2. **Docker Compose**: Ensure you have Docker Compose installed. You can follow the installation instructions [here](https://docs.docker.com/compose/install/).
 
-3. **Ollama Model**: Pull the Ollama model and place it in the volume mount location.
+3. **Ollama Model**: Pull the Ollama model locally.
 
 ## Setup
 

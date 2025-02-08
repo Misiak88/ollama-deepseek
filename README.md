@@ -15,8 +15,8 @@ In this project, we utilize the Ollama to run the DeepSeek r1 model locally usin
 
 1. **Clone the Repository**:
     ```sh
-    git clone https://github.com/yourusername/deepseek.git
-    cd deepseek
+    git clone https://github.com/BShraman/ollama-deepseek.git
+    cd ollama-deepseek
     ```
 
 2. **Pull the Ollama Model**:

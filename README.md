@@ -34,8 +34,9 @@ docker-compose up --build
 *You might have to wait for some time till the Docker build and deepseek model loaded for the first time.*
 
 2. **Access the Service**:
-    Ollama : `http://localhost:11434`[Click here](http://localhost:11434)
-    Gradio : `http://localhost:7860/` [Click here](http://localhost:7860/)
+
+    - **Ollama**: [http://localhost:11434](http://localhost:11434)
+    - **Gradio**: [http://localhost:7860/](http://localhost:7860/)
 
 3. **Run Ollama Locally**:
     Exec into the running container and use the Ollama CLI to run a sample querry for the DeepSeek model.

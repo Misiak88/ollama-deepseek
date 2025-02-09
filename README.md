@@ -46,7 +46,7 @@ docker-compose up --build
     Replace `<container_name>` with the name or ID of your running container.
     ![Ollama CLI](doc/images/ollama.png)
 
-3. **Gradio Application for Chat Interface(Optional)**: 
+4. **Gradio Application for Chat Interface(Optional)**: 
 Navigate to the Gradio interface, update the model parameters, and ask for the response.
 ![Gradio Interface](doc/images/gradio.png)
 

@@ -37,8 +37,16 @@ docker-compose up --build
     Ollama : `http://localhost:11434`[Click here](http://localhost:11434)
     Gradio : `http://localhost:7860/` [Click here](http://localhost:7860/)
 
+3. **Run Ollama Locally**:
+    Exec into the running container and use the Ollama CLI to run a sample querry for the DeepSeek model.
+    ```sh
+    docker exec -it <container_name> /bin/bash
+    ollama run deepseek-r1:7b
+    ```
+    Replace `<container_name>` with the name or ID of your running container.
+    ![Ollama CLI](doc/images/ollama.png)
 
-3. **Gradio Application for Chat Interface**: 
+3. **Gradio Application for Chat Interface(Optional)**: 
 Navigate to the Gradio interface, update the model parameters, and ask for the response.
 ![Gradio Interface](doc/images/gradio.png)
 

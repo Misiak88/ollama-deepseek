@@ -1,25 +1,21 @@
-# Use an official Python base image
+# gradio/Dockerfile
 FROM python:3.13.1-slim-bullseye
 
-# Set environment variables to avoid interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install system dependencies
 RUN apt-get update && apt-get install -y \
-    curl \
-    jq \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
+# skopiuj requirements i zainstaluj
 COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
 
-# Set up a working directory
+# skopiuj cały katalog gradio (w tym chatbot.py) do obrazu
 WORKDIR /app
+COPY . /app
 
-# Expose the default Gradio port
 EXPOSE 7860
 
-# Command to run Ollama and load the DeepSeek model
-ENTRYPOINT [ "tail", "-f", "/dev/null" ]
+# uruchom chatbota
+ENTRYPOINT ["python3", "/app/chatbot.py"]

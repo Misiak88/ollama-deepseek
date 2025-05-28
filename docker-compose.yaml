@@ -2,7 +2,26 @@ version: '3.8'
 
 services:
   ollama:
-    # … trzymasz bez zmian …
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MODEL_PATH=/root/.ollama
+    volumes:
+      - ./app:/app
+      - ./model:/root/.ollama
+    entrypoint:
+      - /bin/bash
+      - -c
+      - /home/scripts/entrypoint.sh
+    restart: unless-stopped
+    networks:
+      - ollama_network
 
   gradio:
     build:
@@ -12,7 +31,9 @@ services:
     container_name: gradio
     ports:
       - "7860:7860"
-    entrypoint: ["python3", "/app/chatbot.py"]
+    entrypoint:
+      - python3
+      - /app/chatbot.py
     depends_on:
       - ollama
     restart: unless-stopped

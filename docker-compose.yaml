@@ -2,24 +2,8 @@ version: '3.8'
 
 services:
   ollama:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: ollama:latest
-    container_name: ollama
-    ports:
-      - "11434:11434"
-    environment:
-      - PYTHONUNBUFFERED=1
-      - MODEL_PATH=/root/.ollama
-    volumes:
-      - ./app:/app
-      - ./model:/root/.ollama
-    entrypoint: ["/bin/bash", "-c", "/home/scripts/entrypoint.sh"]
-    restart: unless-stopped
-    networks:
-      - ollama_network
-  
+    # … trzymasz bez zmian …
+
   gradio:
     build:
       context: ./gradio

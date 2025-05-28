@@ -37,7 +37,7 @@ services:
     ports:
       - "7860:7860"
     volumes:
-      - ./app:/app
+      - ./gradio:/app        
     entrypoint: ["python3", "/app/chatbot.py"]
     depends_on:
       - ollama

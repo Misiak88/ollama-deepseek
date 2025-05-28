@@ -16,14 +16,6 @@ services:
       - ./app:/app
       - ./model:/root/.ollama
     entrypoint: ["/bin/bash", "-c", "/home/scripts/entrypoint.sh"]
-    deploy:
-      resources:
-        limits:
-          memory: 6g
-          cpus: '4.0'
-        reservations:
-          memory: 4g
-          cpus: '2.0'
     restart: unless-stopped
     networks:
       - ollama_network
@@ -36,19 +28,9 @@ services:
     container_name: gradio
     ports:
       - "7860:7860"
-    volumes:
-      - ./gradio:/app        
     entrypoint: ["python3", "/app/chatbot.py"]
     depends_on:
       - ollama
-    deploy:
-      resources:
-        limits:
-          memory: 2g
-          cpus: '2.0'
-        reservations:
-          memory: 1g
-          cpus: '1.0'
     restart: unless-stopped
     networks:
       - ollama_network
